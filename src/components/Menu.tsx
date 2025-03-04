@@ -1,3 +1,4 @@
+import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -125,7 +126,11 @@ const Menu = async () => {
           <span className="hidden lg:block text-gray-400 font-light my-4">
             {i.title}
           </span>
-          {i.items.map((item) =>  (
+          {i.items.map((item) => { 
+            if(item.visible.includes(role)) {
+
+            
+              return (
                 <Link
                   href={item.href}
                   key={item.label}
@@ -134,7 +139,7 @@ const Menu = async () => {
                   <Image src={item.icon} alt="" width={20} height={20} />
                   <span className="hidden lg:block">{item.label}</span>
                 </Link>
-              ) 
+              )} } 
           )}
         </div>
       ))}
